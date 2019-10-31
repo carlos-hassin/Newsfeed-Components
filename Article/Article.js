@@ -1,6 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
+const panelData = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -112,3 +112,97 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+// //Parent Element
+
+// const articles = document.querySelector('.articles');
+
+// //Function here
+// function createPanel(title, date,firstParagraph,secondParagraph, thirdParagraph) {
+  
+
+//   // create each element
+//   const panel = document.createElement('div');
+//   const panelTitle = document.createElement('h2');
+//   const panelDate = document.createElement('p');
+//   const p_one = document.createElement('p');
+//   const p_two = document.createElement('p');
+//   const p_three = document.createElement('p');
+//   const s_expand = document.createElement('span');
+  
+//   // Setup structure of elements
+//   panel.appendChild(panelTitle);
+//   panel.appendChild(panelDate);
+//   panel.appendChild(p_one, p_two,p_three);
+//   panel.appendChild(s_expand)
+  
+//   // set class names
+//   panel.classList.add('article');
+//   panelDate.classList.add('date');
+//   p_one.classList.add('par1');
+//   p_two.classList.add('par2');
+//   p_three.classList.add('par3');
+//   s_expand.classList.add("expandButton");
+
+//   // set text content
+//   panelTitle.textContent = title;
+//   panelDate.textContent = date;
+//   p_one.textContent = firstParagraph;
+//   p_two = secondParagraph;
+//   p_three = thirdParagraph;
+  
+//   // button events
+//    // Toggling classes means this:
+//   // Remove .toggle-on if .toggle-on exists
+//   // Add .toggle-on on if .toggle-on does not exist
+//   buttonPanel.addEventListener('click', event => {
+//     articles.classList.toggle('article-open');
+//   });
+//     // 1. toggle hide-btn on BOTH buttons
+//   //   buttonOpen.classList.toggle('hide-btn');
+//   //   buttonClose.classList.toggle('hide-btn');
+//   //   panelContent.classList.toggle('toggle-on')
+//   // })
+//   return panel
+
+// }
+// console.log(createPanel);
+
+
+const articles = document.querySelector('.articles');
+data.forEach( (item) => {
+  articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+})
+
+
+function createArticle (title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandbtn = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expandbtn);
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandbtn.classList.add('expandButton');
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  expandbtn.textContent = 'expand';
+
+  expandbtn.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+return article
+}
